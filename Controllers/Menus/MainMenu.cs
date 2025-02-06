@@ -1,4 +1,3 @@
-using System;
 using MyNewBank.Enums;
 using Spectre.Console;
 
@@ -21,14 +20,16 @@ public class MainMenu
                          .Select(e => e.ToString().Replace("_", " "))
                          .ToList();
 
+        //Instanciando o enum no prompt do spectre
         var options = AnsiConsole.Prompt(new SelectionPrompt<string>().AddChoices(optEnums));
+
 
         switch(options)
         {
             case "Entrar em sua conta": Console.WriteLine("Você escolheu entrar na conta!");
             break;
 
-            case "Criar uma nova conta": Console.WriteLine("Você escolheu criar uma nova conta!");
+            case "Criar uma nova conta": new CreateBankAccountMenu();
             break;
 
             case "Sair":
@@ -38,8 +39,5 @@ public class MainMenu
             Console.Clear();
             return;
         }
-
     }
-
-    
 }
