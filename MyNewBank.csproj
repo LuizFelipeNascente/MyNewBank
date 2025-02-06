@@ -8,13 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers/" />
-    <Folder Include="Controllers/Menus/" />
     <Folder Include="Controllers/Views/" />
     <Folder Include="Interfaces/" />
-    <Folder Include="Enums/" />
     <Folder Include="Repositories/" />
     <Folder Include="Services/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.49.2-preview.0.74" />
   </ItemGroup>
 
 </Project>
