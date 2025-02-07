@@ -46,3 +46,37 @@ public class CreateBankAccountMenu
         
     }
 }
+
+/*
+
+private string Name { get; set;}
+    private string Phone { get; set;}
+    private string Email { get; set;}
+    private string Password { get; set;}
+
+    public CreateBankAccountMenu()
+    {
+        Menu();
+    }
+
+    public AccountBankModel ToModel()
+    {
+        //validade 
+        
+        return new AccountBankModel
+        {
+            Name = Name,
+            Phone = Phone,
+            Email = Email,
+            Password = Password
+        };
+
+       
+    }
+
+    public void SendToService()
+    {
+        new CreateAccountBankService(ToModel());
+    }
+
+*/
