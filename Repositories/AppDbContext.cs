@@ -1,5 +1,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using MyNewBank.Models;
 
 namespace MyNewBank.Repositories;
 
@@ -7,7 +8,7 @@ public class AppDbContext : DbContext
 {
     public string DbPath { get; }
 
-    public DbSet<AccountBankRepository> AccountBank { get; set; }
+    public DbSet<AccountBankModel> AccountBank { get; set; }
 
     //public DbSet<Transactions> Transactions { get; set; }
 

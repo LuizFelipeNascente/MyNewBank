@@ -1,5 +1,5 @@
 using System;
-using MyNewBank.Models.Interfaces;
+using MyNewBank.Models;
 using MyNewBank.Services;
 using Spectre.Console;
 
@@ -31,7 +31,7 @@ public class CreateBankAccountMenu
         Console.Write("Defina sua senha: ");
         var password = Console.ReadLine();
 
-        var accountData = new
+        AccountBankModel accountData = new AccountBankModel
         {
             Name = name,
             Phone = phone,
@@ -39,7 +39,10 @@ public class CreateBankAccountMenu
             Password = password
         };
 
-        new CreateAccountBankService(accountData);    
+        //var sendoModelBankAccount = new AccountBankModel();
+        //sendoModelBankAccount.CreateAccountBank(accountData);
 
+        new CreateAccountBankService(accountData);
+        
     }
 }

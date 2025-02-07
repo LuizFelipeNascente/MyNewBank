@@ -4,8 +4,8 @@ namespace MyNewBank.Models;
 
 public class AccountModel
 {
-    public decimal Balance { get; protected set; } = 0;
+    public decimal Balance { get; set; }
     public int AccountNumber { get; set; }
-    public DateTime AddOn { get; protected set; } = DateTime.Now;
+    public DateTime AddOn { get; set; }
 
 }
