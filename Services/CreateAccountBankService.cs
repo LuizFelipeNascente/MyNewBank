@@ -15,7 +15,9 @@ public class CreateAccountBankService
         accountData.Balance = 0;
         accountData.AddOn = DateTime.Now;
 
-        new AccountBankRepository(accountData);
+        new CreateAccountBankService(accountData);
+
+         
     }
 
     public int BankAccountCodeGenerator()
