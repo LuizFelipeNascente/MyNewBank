@@ -11,17 +11,20 @@ public class CreateAccountBankService
     {
         accountData.AccountId = new Guid();
         accountData.AccounStatus = AccountStatusEnum.Active;
-        accountData.AccountNumber = CheckAccountNumber();
+        accountData.AccountNumber = BankAccountCodeGenerator();
         accountData.Balance = 0;
         accountData.AddOn = DateTime.Now;
 
         new AccountBankRepository(accountData);
-
-
     }
 
-    public int CheckAccountNumber()
+    public int BankAccountCodeGenerator()
     {
-        return 1;
+        int bankAccountNumber = new Random().Next(100000, 999999);
+        if(new CheckAccountNumberRepository().Check(bankAccountNumber) == false)
+        {
+            return bankAccountNumber;
+        }
+        return BankAccountCodeGenerator();
     }
 }
