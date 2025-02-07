@@ -42,7 +42,7 @@ public class CreateBankAccountMenu
         //var sendoModelBankAccount = new AccountBankModel();
         //sendoModelBankAccount.CreateAccountBank(accountData);
 
-        new CreateAccountBankService(accountData);
+        new CreateBankAccountService(accountData);
         
     }
 }

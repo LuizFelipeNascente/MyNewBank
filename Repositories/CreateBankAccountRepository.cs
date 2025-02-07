@@ -3,10 +3,10 @@ using MyNewBank.Models;
 
 namespace MyNewBank.Repositories;
 
-public class CreateAccountBankService
+public class CreateBankAccountRepository
 {   
     
-    public CreateAccountBankService(AccountBankModel accountData)
+    public CreateBankAccountRepository(AccountBankModel accountData)
     {
         var context = new AppDbContext();
 

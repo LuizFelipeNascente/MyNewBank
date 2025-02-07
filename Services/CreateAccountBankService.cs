@@ -5,9 +5,9 @@ using MyNewBank.Repositories;
 
 namespace MyNewBank.Services;
 
-public class CreateAccountBankService
+public class CreateBankAccountService
 {
-    public CreateAccountBankService(AccountBankModel accountData)
+    public CreateBankAccountService(AccountBankModel accountData)
     {
         accountData.AccountId = new Guid();
         accountData.AccounStatus = AccountStatusEnum.Active;
@@ -15,8 +15,8 @@ public class CreateAccountBankService
         accountData.Balance = 0;
         accountData.AddOn = DateTime.Now;
 
-        new CreateAccountBankService(accountData);
-
+        new CreateBankAccountRepository(accountData);
+        
          
     }
 
