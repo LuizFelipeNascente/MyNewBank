@@ -7,7 +7,7 @@ namespace MyNewBank.Views;
 
 public class CreateBankAccountView
 {
-    public CreateBankAccountView(string name, int accountNumber)
+    public void CreateBankAccountSuccessView(string name, int accountNumber)
     {   
         Console.Clear();
 
@@ -17,6 +17,14 @@ public class CreateBankAccountView
         // Escreve o cabeçalho em tela
         AnsiConsole.Write(welcome);
         // Espara apenas um clique qualquer para em seguida levar para o menu inicial
+        Console.ReadKey();
+        new MainMenu();
+    }
+
+    public void CreateBankAccountFaillView()
+    {   
+
+        Console.WriteLine("Todos os dados são obrigatorios. Presisona qualquer tecla para continuar");
         Console.ReadKey();
         new MainMenu();
     }
