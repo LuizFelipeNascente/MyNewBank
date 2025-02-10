@@ -25,6 +25,7 @@ public class CreateBankAccountView
     {   
 
         Console.WriteLine("Todos os dados são obrigatorios. Presisona qualquer tecla para continuar");
+        // Espara apenas um clique qualquer para em seguida levar para o menu inicial
         Console.ReadKey();
         new MainMenu();
     }
