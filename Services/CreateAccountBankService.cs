@@ -9,7 +9,11 @@ namespace MyNewBank.Services;
 
 public class CreateBankAccountService
 {
-    public CreateBankAccountService(AccountBankModel accountData)
+    public CreateBankAccountService()
+    {
+        
+    }
+    public void CreateBankAccount(AccountBankModel accountData)
     {
         if(accountData.Name == string.Empty || accountData.Email == string.Empty || accountData.Phone == string.Empty || accountData.Password == string.Empty)
         {
