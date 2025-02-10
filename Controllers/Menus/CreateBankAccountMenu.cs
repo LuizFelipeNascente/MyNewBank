@@ -7,6 +7,10 @@ namespace MyNewBank.Controllers.Menus;
 
 public class CreateBankAccountMenu
 {
+    private string Name { get; set;}
+    private string Phone { get; set;}
+    private string Email { get; set;}
+    private string Password { get; set;}
     public CreateBankAccountMenu()
     {
         // Limpa o console
@@ -20,36 +24,36 @@ public class CreateBankAccountMenu
 
         //nome, telefone, email, senha
         Console.Write("Informe seu nome: ");
-        var name = Console.ReadLine();
+        Name = Console.ReadLine();
 
         Console.Write("Informe seu telefone: ");
-        var phone = Console.ReadLine();
+        Phone = Console.ReadLine();
 
         Console.Write("Informe seu email: ");
-        var email = Console.ReadLine();
+        Email = Console.ReadLine();
 
         Console.Write("Defina sua senha: ");
-        var password = Console.ReadLine();
+        Password = Console.ReadLine();
 
         AccountBankModel accountData = new AccountBankModel
         {
-            Name = name,
-            Phone = phone,
-            Email = email,
-            Password = password
+            Name = Name,
+            Phone = Phone,
+            Email = Email,
+            Password = Password
         };
 
         //var sendoModelBankAccount = new AccountBankModel();
         //sendoModelBankAccount.CreateAccountBank(accountData);
 
-        new CreateBankAccountService(accountData);
+        new CreateBankAccountService().CreateBankAccount(accountData);
         
     }
 }
 
 /*
 
-private string Name { get; set;}
+    private string Name { get; set;}
     private string Phone { get; set;}
     private string Email { get; set;}
     private string Password { get; set;}
