@@ -1,0 +1,38 @@
+using System;
+using MyNewBank.Models;
+using MyNewBank.Services;
+using Spectre.Console;
+
+namespace MyNewBank.Controllers.Menus;
+
+public class LoginMenu
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+
+    public LoginMenu()
+    {
+        // Limpa o console
+        Console.Clear();
+        // Isntanciando o metodo de painel para o cabeçalho
+        var header = new Panel("Faça login com seu E-mail e Senh!");
+        // Duplica a borda do painel
+        header.Border = BoxBorder.Double;
+        // Escreve o cabeçalho em tela
+        AnsiConsole.Write(header);
+
+        Console.Write("Digite seu e-mail: ");
+        Email = Console.ReadLine();
+
+        Console.WriteLine("Digite sua senha: ");
+        Password = Console.ReadLine();
+
+        LoginModel login = new LoginModel
+        {
+            Email = Email,
+            Password = Password
+        };
+
+        new LoginService().Login(login);
+    }
+}
