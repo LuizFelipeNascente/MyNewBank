@@ -10,14 +10,16 @@ public class LoginService
 {
     private string Email { get; set; }
     private string Password { get; set; }
-    
-    string name;
-    int accountNumber;
-    Guid accountId;
+    AccountBankModel accountBank;
+
+    private LoginView loginView;
+    private LoginRepository loginRepository;
 
     public LoginService()
     {
         // construtor
+        loginView = new LoginView();
+        loginRepository = new LoginRepository();
     }
 
     public void Login(LoginModel login)
@@ -30,7 +32,7 @@ public class LoginService
         if(Email == string.Empty || Password == string.Empty)
         {
             //se for vazio leva para a view que passa as informações necessárias dados invalidos
-            new LoginView().EmptyData();
+            loginView.EmptyData();
             return;
         }
         // Envia o emial para passado para o metodo de queverifica se o email existe no banco
@@ -40,26 +42,26 @@ public class LoginService
             if(CheckedPassword(Email, Password))
             {
                 // senha bateu, o usuário e direciado para a area logada 
-                new LoggedMenu(name, accountNumber, accountId);
+                new LoggedMenu(accountBank);
                 return;
             } 
             // email não bateu é enviado para view que passa a informação necessária
-            new LoginView().IncorrectPassword();
+            loginView.IncorrectPassword();
             return;
         }
         // se o email não existe no banco, é chamada a view que passa essa informação
-        new LoginView().EmailNotFound();
+        loginView.EmailNotFound();
     }
     //Metodo que verifica se o email existe no banco
     public bool CheckedEmail(string email)
     {
         // o emial passo no meuno de login, é enviado o repositorio que verifica se ele sexiste no banco
-        return new LoginRepository().CheckedEmail(email);
+        return loginRepository.CheckedEmail(email);
     }
     //Metodo que verifica se a senha está correta
     public bool CheckedPassword(string email, string password)
     {
         // senha passada no login é enviada para o reposistoio veriicar se ela está correta
-        return new LoginRepository().CheckedPassword(email, password, out name, out accountNumber, out accountId);
+        return loginRepository.CheckedPassword(email, password, out accountBank);
     }
 }

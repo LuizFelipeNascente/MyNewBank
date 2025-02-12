@@ -18,26 +18,15 @@ public class LoginRepository
         return context.AccountBank.Any(e => e.Email == email);
     }
 
-    public bool CheckedPassword(string email, string password, out string name, out int accountNumber, out Guid accountId)
+    public bool CheckedPassword(string email, string password, out AccountBankModel accountBank)
     {
         // declarando os parametros que serão passados por referencia 
-        name = string.Empty;
-        accountNumber = 0;
-        accountId = Guid.Empty;
+        
         // Iniciado o contexto de conexão com o banco de dados
         var context = new AppDbContext();
         // Procurando o primeiro registro no banco do email já validado
-        var accountBank = context.AccountBank.First(a => a.Email == email);
+        accountBank = context.AccountBank.First(a => a.Email == email);
         // Vaerificando se a senha do email localizado é igual a senha digitada
-        if(accountBank.Password == password)
-        {   
-            // Se a senha for igual, atribui dados da referencia e retorna true 
-            name = accountBank.Name;
-            accountNumber = accountBank.AccountNumber;
-            accountId = accountBank.AccountId;
-            return true;
-        }
-        // Se a senha for diferente retorna false
-        return false;
+        return accountBank.Password == password;
     }
 }

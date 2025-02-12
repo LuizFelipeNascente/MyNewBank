@@ -1,16 +1,17 @@
 using System;
 using MyNewBank.Enums;
+using MyNewBank.Models;
 using Spectre.Console;
 
 namespace MyNewBank.Controllers.Menus;
 
 public class LoggedMenu
 {
-    public LoggedMenu(string userName, int userAccountNumber, Guid userAccountId)
+    public LoggedMenu(AccountBankModel accountBank)
     {
         Console.Clear();
         // Isntanciando o metodo de painel para o cabeçalho
-        var header = new Panel($"Seja Bem Vindo ao NewBank {userName}! Cc: {userAccountNumber} \nSelecione a opção desejada");
+        var header = new Panel($"Seja Bem Vindo ao NewBank {accountBank.Name}! Cc: {accountBank.AccountNumber} \nSelecione a opção desejada");
         header.Border = BoxBorder.Double;
         // Escreve o cabeçalho em tela
         AnsiConsole.Write(header);
