@@ -26,18 +26,18 @@ public class LoginRepository
         accountId = Guid.Empty;
         // Iniciado o contexto de conexão com o banco de dados
         var context = new AppDbContext();
-        // Procurando no banco se a senha passada na chamada, está correta        
+        // Procurando o primeiro registro no banco do email já validado
         var accountBank = context.AccountBank.First(a => a.Email == email);
-        
-
+        // Vaerificando se a senha do email localizado é igual a senha digitada
         if(accountBank.Password == password)
-        {
+        {   
+            // Se a senha for igual, atribui dados da referencia e retorna true 
             name = accountBank.Name;
             accountNumber = accountBank.AccountNumber;
             accountId = accountBank.AccountId;
             return true;
         }
-        
+        // Se a senha for diferente retorna false
         return false;
     }
 }
