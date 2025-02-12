@@ -14,7 +14,7 @@ public class LoginView
         // Verificando se o que o usuário digito é ESC e se sim
         // encerra o programa e se não, manda de volta para o login
         if(input.Key == ConsoleKey.Escape)
-        new MainMenu();
+            new MainMenu();
         new LoginMenu();
     }
 
