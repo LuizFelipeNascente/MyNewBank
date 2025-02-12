@@ -15,7 +15,7 @@ public class LoginMenu
         // Limpa o console
         Console.Clear();
         // Isntanciando o metodo de painel para o cabeçalho
-        var header = new Panel("Faça login com seu E-mail e Senh!");
+        var header = new Panel("Faça login com seu E-mail e Senha!");
         // Duplica a borda do painel
         header.Border = BoxBorder.Double;
         // Escreve o cabeçalho em tela
@@ -24,7 +24,7 @@ public class LoginMenu
         Console.Write("Digite seu e-mail: ");
         Email = Console.ReadLine();
 
-        Console.WriteLine("Digite sua senha: ");
+        Console.Write("Digite sua senha: ");
         Password = Console.ReadLine();
 
         LoginModel login = new LoginModel

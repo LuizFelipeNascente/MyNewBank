@@ -26,7 +26,7 @@ public class MainMenu
 
         switch(options)
         {
-            case "Entrar em sua conta": Console.WriteLine("Você escolheu entrar na conta!");
+            case "Entrar em sua conta": new LoginMenu();
             break;
 
             case "Criar uma nova conta": new CreateBankAccountMenu();
@@ -35,7 +35,7 @@ public class MainMenu
             case "Sair":
             Console.Clear(); 
             Console.WriteLine("Saindo do sistema...");
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             Console.Clear();
             return;
         }
