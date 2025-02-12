@@ -37,7 +37,7 @@ public class LoginService
         if(CheckedEmail(Email))
         {
             // email existindo, é verificado se a senha bate
-            if(CheckedPassword(Password))
+            if(CheckedPassword(Email, Password))
             {
                 // senha bateu, o usuário e direciado para a area logada 
                 new LoggedMenu(name, accountNumber, accountId);
@@ -57,9 +57,9 @@ public class LoginService
         return new LoginRepository().CheckedEmail(email);
     }
     //Metodo que verifica se a senha está correta
-    public bool CheckedPassword(string password)
+    public bool CheckedPassword(string email, string password)
     {
         // senha passada no login é enviada para o reposistoio veriicar se ela está correta
-        return new LoginRepository().CheckedPassword(password, out name, out accountNumber, out accountId);
+        return new LoginRepository().CheckedPassword(email, password, out name, out accountNumber, out accountId);
     }
 }
