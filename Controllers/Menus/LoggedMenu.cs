@@ -1,6 +1,7 @@
 using System;
 using MyNewBank.Enums;
 using MyNewBank.Models;
+using MyNewBank.Services;
 using Spectre.Console;
 
 namespace MyNewBank.Controllers.Menus;
@@ -29,7 +30,7 @@ public class LoggedMenu
             case "Ver meu saldo" : Console.WriteLine("Mostrando saldo ...");
             break;
 
-            case "Fazer um deposito" : Console.WriteLine("Depositando ...");
+            case "Fazer um deposito" : new DepositMenu(accountBank);
             break;
 
             case "Fazer um saque" : Console.WriteLine("Sacando ...");
