@@ -35,7 +35,7 @@ public class CreateBankAccountService
         accountData.AddOn = DateTime.Now;
 
         // instacia a classe de repositorio e manda o accountData com todos os dados para serem salvos
-        new CreateBankAccountRepository(accountData);
+        new CreateBankAccountRepository().CreateBankAccount(accountData);
         // instanacia a view que mostra o resultado de sucesso na criação de uma nova conta
         createBankAccountView.CreateBankAccountSuccessView(accountData.Name, accountData.AccountNumber);
          

@@ -5,8 +5,13 @@ namespace MyNewBank.Repositories;
 
 public class CreateBankAccountRepository
 {   
-     private AppDbContext context;
-    public CreateBankAccountRepository(AccountBankModel accountData)
+    private AppDbContext context;
+
+    public CreateBankAccountRepository()
+    {
+        context = new AppDbContext();
+    }
+    public void CreateBankAccount(AccountBankModel accountData)
     {
         //var context = new AppDbContext();
         context = new AppDbContext();
