@@ -11,7 +11,6 @@ public class LoginService
     private string Email { get; set; }
     private string Password { get; set; }
     AccountBankModel accountBank;
-
     private LoginView loginView;
     private LoginRepository loginRepository;
 

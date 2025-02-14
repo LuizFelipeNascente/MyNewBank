@@ -5,11 +5,11 @@ namespace MyNewBank.Repositories;
 
 public class CreateBankAccountRepository
 {   
-    
+     private AppDbContext context;
     public CreateBankAccountRepository(AccountBankModel accountData)
     {
-        var context = new AppDbContext();
-
+        //var context = new AppDbContext();
+        context = new AppDbContext();
         // Adiciona a nova conta ao banco
         context.AccountBank.Add(accountData);
         // Salva as alterações feitas
