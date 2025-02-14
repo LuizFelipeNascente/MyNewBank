@@ -9,9 +9,13 @@ namespace MyNewBank.Services;
 
 public class CreateBankAccountService
 {
+    CheckAccountNumberService checkAccountNumberService;
+    CreateBankAccountView createBankAccountView;
     public CreateBankAccountService()
     {
         // contrutor
+        createBankAccountView = new CreateBankAccountView();
+        checkAccountNumberService = new CheckAccountNumberService();
     }
     public void CreateBankAccount(AccountBankModel accountData)
     {
@@ -19,7 +23,7 @@ public class CreateBankAccountService
         if(accountData.Name == string.Empty || accountData.Email == string.Empty || accountData.Phone == string.Empty || accountData.Password == string.Empty)
         {   
             //caso tenha algo vazio, retorna, manda para um view de erro
-            new CreateBankAccountView().CreateBankAccountFaillView();
+            createBankAccountView.CreateBankAccountFaillView();
             return;
         }
 
@@ -33,7 +37,7 @@ public class CreateBankAccountService
         // instacia a classe de repositorio e manda o accountData com todos os dados para serem salvos
         new CreateBankAccountRepository(accountData);
         // instanacia a view que mostra o resultado de sucesso na criação de uma nova conta
-        new CreateBankAccountView().CreateBankAccountSuccessView(accountData.Name, accountData.AccountNumber);
+        createBankAccountView.CreateBankAccountSuccessView(accountData.Name, accountData.AccountNumber);
          
     }
 
@@ -42,7 +46,7 @@ public class CreateBankAccountService
         //Gerar um numero aleatorio para definciar como numero da conta corrente
         int bankAccountNumber = new Random().Next(100000, 999999);
         // instancia a classe que verifica se esse numero já existe no banco
-        if(new CheckAccountNumberService().Check(bankAccountNumber))
+        if(checkAccountNumberService.Check(bankAccountNumber))
         {   
              //Caso exista, chama o metodo novamente para criar um novo numero   
              return BankAccountCodeGenerator();
