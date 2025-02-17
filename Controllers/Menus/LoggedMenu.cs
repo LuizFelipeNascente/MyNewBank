@@ -27,7 +27,7 @@ public class LoggedMenu
 
         switch(options)
         {
-            case "Ver meu saldo" : Console.WriteLine("Mostrando saldo ...");
+            case "Ver meu saldo" : new BalanceService().CheckBalance(accountBank);
             break;
 
             case "Fazer um deposito" : new DepositMenu(accountBank);
