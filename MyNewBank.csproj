@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers/Views/" />
+    <Folder Include="DataBase/" />
     <Folder Include="Interfaces/" />
     <Folder Include="Models/Interfaces/" />
   </ItemGroup>
