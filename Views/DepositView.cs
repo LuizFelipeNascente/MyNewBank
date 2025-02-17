@@ -19,7 +19,7 @@ namespace MyNewBank.Views;
             new DepositMenu(accountBank);
         }
 
-        public void DepositMadeSuccessfully()
+        public void DepositMadeSuccessfully(AccountBankModel accountBank, decimal newBalance)
         {
             
         }
