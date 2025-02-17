@@ -22,17 +22,16 @@ namespace MyNewBank.Services;
             currentBalance = 0;
         }
 
-        public bool Deposit(string valueDeposit, AccountBankModel accountBank)
+        public void Deposit(string valueDeposit, AccountBankModel accountBank)
         {
             if (validatorService.TransactionValueValidator(valueDeposit))
             {
                 depositView.InvalidValue(accountBank);
-                return false;
             }
             
             currentBalance = balanceService.CheckBalance(accountBank.AccountId);
             newBalance = currentBalance + decimal.Parse(valueDeposit);
             depositRepository.MakeDeposit(newBalance, accountBank);
-            return true;
+            depositView.DepositMadeSuccessfully(accountBank, newBalance);
         }
     }
