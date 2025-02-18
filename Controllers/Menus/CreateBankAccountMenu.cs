@@ -30,10 +30,10 @@ public class CreateBankAccountMenu
         Phone = Console.ReadLine();
 
         Console.Write("Informe seu email: ");
-        Email = Console.ReadLine();
+        Email = Console.ReadLine()?.Trim().ToLower();
 
         Console.Write("Defina sua senha: ");
-        Password = Console.ReadLine();
+        Password = Console.ReadLine()?.Trim();
 
         AccountBankModel accountData = new AccountBankModel
         {

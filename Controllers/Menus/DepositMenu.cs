@@ -10,7 +10,7 @@ namespace MyNewBank.Controllers.Menus;
         public DepositMenu(AccountBankModel accountBank)
         {
             Console.Write("Qual Valor você irá depositar?: ");
-            ValueDeposit = Console.ReadLine();
+            ValueDeposit = Console.ReadLine()?.Replace(',', '.');
             
             new DepositService().Deposit(ValueDeposit, accountBank);
         }
