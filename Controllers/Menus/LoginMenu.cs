@@ -22,10 +22,10 @@ public class LoginMenu
         AnsiConsole.Write(header);
 
         Console.Write("Digite seu e-mail: ");
-        Email = Console.ReadLine();
+        Email = Console.ReadLine()?.Trim().ToLower();
 
         Console.Write("Digite sua senha: ");
-        Password = Console.ReadLine();
+        Password = Console.ReadLine()?.Trim();
 
         LoginModel login = new LoginModel
         {
