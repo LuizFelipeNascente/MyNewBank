@@ -30,6 +30,7 @@ namespace MyNewBank.Services;
             if (validatorService.TransactionValueValidator(valueDeposit))
             {
                 depositView.InvalidValue(accountBank);
+                return;
             }
             // caso o dado seja aceito
             // o saldo atual da conta é obito pelo checkbalance e atrobuido a uma variavel

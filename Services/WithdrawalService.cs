@@ -27,6 +27,7 @@ public class WithdrawalService
         if (validatorService.TransactionValueValidator(valueWithdrawal))
             {
                 withdrawalView.InvalidValue(accountBank);
+                return;
             }
         // criando variavel para armazenar o saldo atual da conta
         currentBalance = balanceService.CheckBalance(accountBank.AccountId);
@@ -35,6 +36,7 @@ public class WithdrawalService
         {
             //se for menor, levar para a view passar a informação necessária
             withdrawalView.WithdrawalNotSuccessfully(accountBank, currentBalance);
+            return;
         }
         // o novo saldo e atribuido diminuindo o saldo atual do valor sacado
         newBalance = currentBalance - decimal.Parse(valueWithdrawal);
