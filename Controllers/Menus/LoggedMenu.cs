@@ -33,7 +33,7 @@ public class LoggedMenu
             case "Fazer um deposito" : new DepositMenu(accountBank);
             break;
 
-            case "Fazer um saque" : Console.WriteLine("Sacando ...");
+            case "Fazer um saque" : new WithdrawalMenu(accountBank);
             break;
 
             case "Fazer uma transferecia" : Console.WriteLine("Transferindo ...");
