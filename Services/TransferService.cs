@@ -1,16 +1,22 @@
 using System;
+using MyNewBank.Repositories;
 
 namespace MyNewBank.Services;
 
 public class TransferService
 {
-    CheckAccountNumberService checkAccountNumberService;
+    TransferRepository transferRepository;
+    BalanceService balanceService;
+    decimal PayerBalance;
+    decimal ReceiverBalance;
     public TransferService()
     {
-        checkAccountNumberService = new CheckAccountNumberService();       
+        balanceService = new BalanceService();     
+        transferRepository = new TransferRepository();  
     }
     public void Transfer(Guid sourceAccountId, int destinationAccountId, string valueTransfer)
     {
-        
+        PayerBalance = balanceService.CheckBalance(sourceAccountId);
+        //ReceiverBalance = balanceService.CheckBalance(destinationAccountId);
     }
 }
