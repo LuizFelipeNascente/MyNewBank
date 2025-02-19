@@ -13,6 +13,7 @@ public class WithdrawalService
     private WithdrawalRepository withdrawalRepository;
     private ValidatorService validatorService;
     private BalanceService balanceService;
+    private TransactionService transactionService;
     public WithdrawalService()
     {
         withdrawalView = new WithdrawalView();
@@ -20,6 +21,7 @@ public class WithdrawalService
         validatorService = new ValidatorService();
         balanceService = new BalanceService();
         currentBalance = 0;
+        transactionService = new TransactionService();
     }
     public void Withdrawal(string valueWithdrawal, AccountBankModel accountBank)
     {
@@ -42,7 +44,10 @@ public class WithdrawalService
         newBalance = currentBalance - decimal.Parse(valueWithdrawal);
         // O novo saldo após a diminuição é enviado para a classe de conexão com o banco de dados
         withdrawalRepository.MakeWithdrawal(newBalance, accountBank);
+        // COMEÇAR A IMPLEMENTAÇÃO DE TRANSAÇÕES
+        if(transactionService.TransactionWithdrawal(accountBank.AccountId, decimal.Parse(valueWithdrawal)))
         // após o novo valor ser enviado para ser salvo em banco, o usuário é redirecionado para para o view de sucesso
-        withdrawalView.WithdrawalSuccessfully(accountBank, newBalance, decimal.Parse(valueWithdrawal));
+        //se o salvamento em banco der certo
+            withdrawalView.WithdrawalSuccessfully(accountBank, newBalance, decimal.Parse(valueWithdrawal));
     }   
 }

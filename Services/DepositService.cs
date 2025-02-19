@@ -15,6 +15,7 @@ namespace MyNewBank.Services;
         private ValidatorService validatorService;
         private BalanceService balanceService;
         private TransactionService transactionService;
+        
         public DepositService()
         {
             // instanciando classes
@@ -24,6 +25,7 @@ namespace MyNewBank.Services;
             balanceService = new BalanceService();
             currentBalance = 0;
             transactionService = new TransactionService();
+            
         }
 
         public void Deposit(string valueDeposit, AccountBankModel accountBank)
@@ -43,7 +45,9 @@ namespace MyNewBank.Services;
             depositRepository.MakeDeposit(newBalance, accountBank);
 
             // COMEÇAR A IMPLEMENTAÇÃO DE TRANSAÇÕES
+            if(transactionService.TransactionDeposit(accountBank.AccountId, decimal.Parse(valueDeposit)))
             // após o novo valor ser enviado para ser salvo em banco, o usuário é redirecionado para para o view de sucesso
-            depositView.DepositSuccessfully(accountBank, newBalance, decimal.Parse(valueDeposit));
+            //se o salvamento em banco der certo
+                depositView.DepositSuccessfully(accountBank, newBalance, decimal.Parse(valueDeposit));
         }
     }
