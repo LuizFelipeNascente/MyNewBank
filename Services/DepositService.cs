@@ -14,6 +14,7 @@ namespace MyNewBank.Services;
         private DepositRepository depositRepository;
         private ValidatorService validatorService;
         private BalanceService balanceService;
+        private TransactionService transactionService;
         public DepositService()
         {
             // instanciando classes
@@ -22,6 +23,7 @@ namespace MyNewBank.Services;
             validatorService = new ValidatorService();
             balanceService = new BalanceService();
             currentBalance = 0;
+            transactionService = new TransactionService();
         }
 
         public void Deposit(string valueDeposit, AccountBankModel accountBank)
@@ -39,6 +41,8 @@ namespace MyNewBank.Services;
             newBalance = currentBalance + decimal.Parse(valueDeposit);
             // O novo saldo após a soma é enviado para a classe de conexão com o banco de dados
             depositRepository.MakeDeposit(newBalance, accountBank);
+
+            // COMEÇAR A IMPLEMENTAÇÃO DE TRANSAÇÕES
             // após o novo valor ser enviado para ser salvo em banco, o usuário é redirecionado para para o view de sucesso
             depositView.DepositSuccessfully(accountBank, newBalance, decimal.Parse(valueDeposit));
         }

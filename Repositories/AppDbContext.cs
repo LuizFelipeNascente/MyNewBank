@@ -10,7 +10,7 @@ public class AppDbContext : DbContext
 
     public DbSet<AccountBankModel> AccountBank { get; set; }
 
-    //public DbSet<Transactions> Transactions { get; set; }
+    public DbSet<TransactionModel> Transactions { get; set; }
 
     public AppDbContext()
     {
