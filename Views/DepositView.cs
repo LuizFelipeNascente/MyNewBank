@@ -19,7 +19,7 @@ namespace MyNewBank.Views;
             new DepositMenu(accountBank);
         }
 
-        public void DepositMadeSuccessfully(AccountBankModel accountBank, decimal newBalance, decimal valueDeposit)
+        public void DepositSuccessfully(AccountBankModel accountBank, decimal newBalance, decimal valueDeposit)
         {   
             Console.WriteLine($"\nO valor de R$ {valueDeposit} Foi depositado! \nSeu Saldo atual é de R$ {newBalance} \nPression qualquer tecla para continuar!");
             Console.ReadKey();

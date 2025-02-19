@@ -39,6 +39,6 @@ namespace MyNewBank.Services;
             // O novo saldo após a soma é enviado para a classe de conexão com o banco de dados
             depositRepository.MakeDeposit(newBalance, accountBank);
             // após o novo valor ser enviado para ser salvo em banco, o usuário é redirecionado para para o view de sucesso
-            depositView.DepositMadeSuccessfully(accountBank, newBalance, decimal.Parse(valueDeposit));
+            depositView.DepositSuccessfully(accountBank, newBalance, decimal.Parse(valueDeposit));
         }
     }

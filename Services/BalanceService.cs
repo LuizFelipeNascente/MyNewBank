@@ -22,7 +22,7 @@ public class BalanceService
 
     public void CheckBalance(AccountBankModel accountBank)
     {
-        // o metodo recebe um accountId e enviado a classe de conexão com o banco de dados
+        // o metodo recebe um objeto e extrai o accountId e enviado a classe de conexão com o banco de dados
         // para oberter um retorno que é o saldo da conta
         var currentBalance = balanceRepository.GetBalance(accountBank.AccountId);
         new BalanceView(accountBank, currentBalance);
