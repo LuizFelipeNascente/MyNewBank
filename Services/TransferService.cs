@@ -13,6 +13,7 @@ public class TransferService
     TransferView transferView;
     TransactionService transactionService;
     AccountBankModel DestinationAccountId;
+    ValidatorService validatorService;
     
     decimal PayerBalance;
     decimal ReceiverBalance;
@@ -23,9 +24,15 @@ public class TransferService
         loginRepository = new LoginRepository();
         transferView = new TransferView();
         transactionService = new TransactionService();
+        validatorService = new ValidatorService();
     }
     public void Transfer(AccountBankModel accountBank, int destinationAccountNumber, string valueTransfer)
     {   
+        if (validatorService.AccountNumberValidator(destinationAccountNumber.ToString()))
+            {
+                transferView.TransferImpossible(accountBank, destinationAccountNumber);
+                return;
+            }
         // Atribuindo o saldo atual do pagador, usando metodo de verificar saldo! Mandando o accountid
         // para em seguida fazer a diminuição desse valor
         PayerBalance = balanceService.CheckBalance(accountBank.AccountId);
