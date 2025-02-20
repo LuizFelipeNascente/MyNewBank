@@ -39,7 +39,7 @@ public class LoggedMenu
             case "Fazer uma transferecia" : new TransferMenu(accountBank);
             break;
 
-            case "Ver meu extrato" : Console.WriteLine("Mostrando extrando ...");
+            case "Ver meu extrato" : new ExtractMenu(accountBank);
             break;
 
             case "Sair da conta":
