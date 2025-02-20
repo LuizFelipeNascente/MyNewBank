@@ -28,7 +28,7 @@ public class ExtractMenu
 
         switch(options)
         {
-            case "Extrado dos ultimos 30 dias": Console.WriteLine("30 dias ...");
+            case "Extrato dos Ultimos 30 dias": Console.WriteLine("30 dias ...");
             break;
 
             case "Extrato Personalizado": Console.WriteLine("Personalizado ...");
