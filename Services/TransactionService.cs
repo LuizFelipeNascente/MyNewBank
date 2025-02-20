@@ -39,4 +39,17 @@ public class TransactionService
         return transactionRepository.Transaction(transactionModel);
         
     }
+
+    public bool TransactionTransfer(AccountBankModel payerAccountBank, AccountBankModel receiverAccountBank, decimal newReceiverBalance)
+    {   
+        transactionModel.TransactionId = new Guid();
+        transactionModel.Amount = newReceiverBalance;
+        transactionModel.TransactionType = Enums.TransactionTypeEnum.Transferencia;
+        transactionModel.SourceAccountId = payerAccountBank.AccountId;
+        transactionModel.DestinationAccountId = receiverAccountBank.AccountId;
+        transactionModel.TransactionDate = DateTime.Now;
+
+        return transactionRepository.Transaction(transactionModel);
+        
+    }
 }

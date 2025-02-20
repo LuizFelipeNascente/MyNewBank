@@ -30,4 +30,10 @@ public class LoginRepository
         // Vaerificando se a senha do email localizado é igual a senha digitada
         return accountBank.Password == password;
     }
+    //Metodo que busca uma conta bancaraia atraves do seu numero de conta
+    public AccountBankModel VerifyAccount(int accountNumber)
+    {
+        AccountBankModel destinationAccountNumber = context.AccountBank.FirstOrDefault(x => x.AccountNumber == accountNumber);
+        return destinationAccountNumber;
+    }
 }

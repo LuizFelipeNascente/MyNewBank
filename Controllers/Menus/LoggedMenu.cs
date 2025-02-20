@@ -36,7 +36,7 @@ public class LoggedMenu
             case "Fazer um saque" : new WithdrawalMenu(accountBank);
             break;
 
-            case "Fazer uma transferecia" : Console.WriteLine("Transferindo ...");
+            case "Fazer uma transferecia" : new TransferMenu(accountBank);
             break;
 
             case "Ver meu extrato" : Console.WriteLine("Mostrando extrando ...");

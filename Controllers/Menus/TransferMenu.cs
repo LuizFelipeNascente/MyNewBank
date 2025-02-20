@@ -16,6 +16,6 @@ public class TransferMenu
             Console.Write("Qual Valor você irá depositar?: ");
             ValueTransfer = Console.ReadLine()?.Replace(',', '.');
             
-            new TransferService().Transfer(accountBank.AccountId, AccountNumber, ValueTransfer);
+            new TransferService().Transfer(accountBank, AccountNumber, ValueTransfer);
         }
 }
