@@ -1,6 +1,7 @@
 using System;
 using MyNewBank.Enums;
 using MyNewBank.Models;
+using MyNewBank.Services;
 using Spectre.Console;
 
 namespace MyNewBank.Controllers.Menus;
@@ -28,7 +29,7 @@ public class ExtractMenu
 
         switch(options)
         {
-            case "Extrato dos Ultimos 30 dias": Console.WriteLine("30 dias ...");
+            case "Extrato dos Ultimos 30 dias": new ExtractService().ExtractServiceThirtyDay(accountBank);
             break;
 
             case "Extrato Personalizado": Console.WriteLine("Personalizado ...");
