@@ -11,7 +11,7 @@ public class TransferMenu
         public TransferMenu(AccountBankModel accountBank)
         {
             Console.Write("Qual o número da conta de destino?: ");
-            AccountNumber = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out AccountNumber);
 
             Console.Write("Qual Valor você irá depositar?: ");
             ValueTransfer = Console.ReadLine()?.Replace(',', '.');

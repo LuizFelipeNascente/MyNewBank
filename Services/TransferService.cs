@@ -28,9 +28,9 @@ public class TransferService
     }
     public void Transfer(AccountBankModel accountBank, int destinationAccountNumber, string valueTransfer)
     {   
-        if (validatorService.AccountNumberValidator(destinationAccountNumber.ToString()))
+        if (destinationAccountNumber == 0)
             {
-                transferView.TransferImpossible(accountBank, destinationAccountNumber);
+                transferView.TransferImpossible(accountBank);
                 return;
             }
         // Atribuindo o saldo atual do pagador, usando metodo de verificar saldo! Mandando o accountid
@@ -44,7 +44,7 @@ public class TransferService
         if(DestinationAccountId == null)
         {
             //Se não existir, manda para a view infomar
-            transferView.TransferImpossible(accountBank, destinationAccountNumber);
+            transferView.TransferInvalid(accountBank, destinationAccountNumber);
             return;
         }
         // Se existir
@@ -66,7 +66,7 @@ public class TransferService
         transferRepository.MakeTransfer(accountBank, newPayerBalance, DestinationAccountId, newReceiverBalance);
         //Se a gravação dos novos saldos em banco for bem sucessido, envia para a view de sucesso
         if(transactionService.TransactionTransfer(accountBank, DestinationAccountId, decimal.Parse(valueTransfer)))
-            transferView.TransferSuccessfully(accountBank, newPayerBalance, decimal.Parse(valueTransfer));
+            transferView.TransferSuccessfully(accountBank, newPayerBalance, decimal.Parse(valueTransfer), DestinationAccountId);
 
     }
 }
