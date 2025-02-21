@@ -32,4 +32,12 @@ public class TransferView
             Console.ReadKey();
         new LoggedMenu(accountBank);
     }
+
+    public void InvalidValue(AccountBankModel accountBank)
+    {
+        Console.WriteLine("\nO valor informado é invalido! Pressiona qualquer tecla para voltar ao menu");
+           Console.ReadKey();
+        new LoggedMenu(accountBank);
+    }
+
 }

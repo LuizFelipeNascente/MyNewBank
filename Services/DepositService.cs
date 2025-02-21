@@ -31,7 +31,7 @@ namespace MyNewBank.Services;
         public void Deposit(string valueDeposit, AccountBankModel accountBank)
         {
             //pega o valor digfitado e envia para o validador e caso seja invalido, manda para a view responsavel
-            if (validatorService.TransactionValueValidator(valueDeposit))
+            if (!validatorService.TransactionValueValidator(valueDeposit))
             {
                 depositView.InvalidValue(accountBank);
                 return;

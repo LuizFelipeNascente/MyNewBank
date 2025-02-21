@@ -33,6 +33,12 @@ public class TransferService
                 transferView.TransferImpossible(accountBank);
                 return;
             }
+
+        if (!validatorService.TransactionValueValidator(valueTransfer))
+            {
+                transferView.InvalidValue(accountBank);
+                return;
+            }    
         // Atribuindo o saldo atual do pagador, usando metodo de verificar saldo! Mandando o accountid
         // para em seguida fazer a diminuição desse valor
         PayerBalance = balanceService.CheckBalance(accountBank.AccountId);

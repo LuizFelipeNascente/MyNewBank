@@ -26,7 +26,7 @@ public class WithdrawalService
     public void Withdrawal(string valueWithdrawal, AccountBankModel accountBank)
     {
         //enviando o valor digitado para o metodo que verifica se é valido 
-        if (validatorService.TransactionValueValidator(valueWithdrawal))
+        if (!validatorService.TransactionValueValidator(valueWithdrawal))
             {
                 withdrawalView.InvalidValue(accountBank);
                 return;
