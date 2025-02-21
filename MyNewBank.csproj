@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Relatorios/" />
     <Folder Include="Interfaces/" />
     <Folder Include="Models/Interfaces/" />
   </ItemGroup>
