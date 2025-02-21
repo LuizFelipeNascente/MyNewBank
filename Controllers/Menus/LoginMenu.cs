@@ -9,9 +9,11 @@ public class LoginMenu
 {
     public string Email { get; set; }
     public string Password { get; set; }
+    LoginService loginService;
 
     public LoginMenu()
     {
+        loginService = new LoginService();
         // Limpa o console
         Console.Clear();
         // Isntanciando o metodo de painel para o cabeçalho
@@ -25,7 +27,7 @@ public class LoginMenu
         Email = Console.ReadLine()?.Trim().ToLower();
 
         Console.Write("Digite sua senha: ");
-        Password = Console.ReadLine()?.Trim();
+        Password = loginService.ReadPassword();
 
         LoginModel login = new LoginModel
         {

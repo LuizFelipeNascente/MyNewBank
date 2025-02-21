@@ -9,6 +9,7 @@ namespace MyNewBank.Views;
 
 public class ExtractView
 {
+    //Quando há dados no extrato
     public void ExtractViewSuccess(List<ExtractDto> transactions, AccountBankModel accountBank)
     {
 
@@ -48,16 +49,30 @@ public class ExtractView
     
         AnsiConsole.Write(table);
         
-        Console.WriteLine("\nPressione qualquer tecla para voltar ao Menu");
-        //Console.ReadKey();
-        //new LoggedMenu(accountBank);
-
+        Console.WriteLine("\nPressione P para exportar o extrato em PDF \nPressione E para exportar o extrato em Excel \nOu Pressione qualquer tecla para voltar ao Menu");
+        //Verifica se a teclado digitada e P
         ConsoleKeyInfo input = Console.ReadKey();
         if(input.Key == ConsoleKey.P)
-        new ExportService().ExportToPdf(transactions);
-        new LoginMenu();
+        {
+            //Se for P, vai gerar o PDF e aguardar um clica para vcoltar ao menu
+             new ExportService().ExportToPdf(transactions);
+             Console.Write("O arquivo está disponivel na pasta Relatorios");
+             Console.ReadKey();
+             new LoggedMenu(accountBank);
+             return;
+        }
+         //Verifica se a teclado digitada e E
+        if(input.Key == ConsoleKey.E)
+        {
+             //Se for E, vai gerar o EXCEL e aguardar um clica para vcoltar ao menu
+             new ExportService().ExportToExcel(transactions);
+             Console.Write("O arquivo está disponivel na pasta Relatorios");
+             Console.ReadKey();
+             new LoggedMenu(accountBank);
+             return;
+        }   
     }
-
+    //Quando NÃO há dados no extrato
     public void ExtractViewEmpty(AccountBankModel accountBank)
     {   
         Console.Clear();
@@ -71,7 +86,7 @@ public class ExtractView
         Console.ReadKey();
         new LoggedMenu(accountBank);
     }
-
+    //Defasado 
     public void ExtractViewOld(List<ExtractDto> transactions, AccountBankModel accountBank)
     {   
         Console.WriteLine("\n=== Extrato dos Últimos 30 Dias ===\n");

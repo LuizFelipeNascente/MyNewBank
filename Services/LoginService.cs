@@ -63,4 +63,34 @@ public class LoginService
         // senha passada no login é enviada para o reposistoio veriicar se ela está correta
         return loginRepository.CheckedPassword(email, password, out accountBank);
     }
+
+    //Metodo para esconder a senha digitada
+    public string ReadPassword()
+    {
+        string password = string.Empty;
+        ConsoleKeyInfo keyInfo;
+
+        do
+        {
+            keyInfo = Console.ReadKey(intercept: true);
+
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                break;
+            }
+            else if (keyInfo.Key == ConsoleKey.Backspace && password.Length > 0)
+            {
+                password = password[0..^1];
+                Console.Write("\b \b");
+            }
+            else if (!char.IsControl(keyInfo.KeyChar))
+            {
+                password += keyInfo.KeyChar;
+                Console.Write("*");
+            }
+        } while (true);
+
+        Console.WriteLine();
+        return password;
+    }
 }
